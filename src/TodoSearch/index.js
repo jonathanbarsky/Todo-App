@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/TodoSearch.css'
+import './TodoSearch.css'
 
 function TodoSearch ({ searchValue, setSearchValue }) {
     // React.useState es la forma en que podemosagregar estado a nuestros componentes cuando los creamos como funciones
