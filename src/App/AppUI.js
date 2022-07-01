@@ -31,7 +31,7 @@ function AppUI({
       />
 
       {/* recivimos el texto de TodoItem */}
-      <TodoList />
+      <TodoList>
         {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}
@@ -39,10 +39,11 @@ function AppUI({
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
-          />
+            />
         ))}
       {/* key esto es para que react pueda identificar cual componente es cual dentro de una lista y asi nos evite renders innecesarios cunado un elemento no debe cambiar
       es un id unico para cada componente*/}
+      </TodoList>
 
 
       <CreateTodoButton />
