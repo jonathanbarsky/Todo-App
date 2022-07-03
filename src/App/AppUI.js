@@ -8,6 +8,13 @@ import {TodoItem} from '../TodoItem'
 import {CreateTodoButton} from '../CreateTodoButton';
 
 function AppUI() {
+  const { 
+    error, 
+    loading, 
+    searchedTodos, 
+    completedTodo, 
+    deleteTodo} = React.useContext(TodoContext)
+
     return(
         // react interpreta las llaves vacias como un Fragment  <>
     // fragment es un componente y los componentes en react empiezan con mayuscula por convencion
@@ -16,14 +23,7 @@ function AppUI() {
       <TodoCounter />
       <TodoSearch />
 
-      <TodoContext.Consumer>
-        {({ 
-          error, 
-          loading, 
-          searchedTodos, 
-          completeTodo, 
-          deleteTodo }) => (
-      // recivimos el texto de TodoItem 
+      {/* // recivimos el texto de TodoItem  */}
           <TodoList>
           {error && <p>Entrá en pánico!, hubo un error...</p>}
           {loading && <p>Estamos cargando, no desesperez...</p>}
@@ -34,15 +34,13 @@ function AppUI() {
               key={todo.text}
               text={todo.text}
               completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
+              onComplete={() => completedTodo(todo.text)}
               onDelete={() => deleteTodo(todo.text)}
               />
           ))}
         {/* key esto es para que react pueda identificar cual componente es cual dentro de una lista y asi nos evite renders innecesarios cunado un elemento no debe cambiar
         es un id unico para cada componente*/}
         </TodoList> 
-        )}
-      </TodoContext.Consumer>
 
       <CreateTodoButton />
       {/* <button>+</button> */}

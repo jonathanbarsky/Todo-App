@@ -1,9 +1,12 @@
 import React from "react";
+import { TodoContext } from "../TodoContext";
 import './TodoSearch.css'
 
-function TodoSearch ({ searchValue, setSearchValue }) {
+function TodoSearch () {
     // React.useState es la forma en que podemosagregar estado a nuestros componentes cuando los creamos como funciones
     // const [searchValue, setSearchValue] = React.useState('');
+
+    const { searchValue, setSearchValue } = React.useContext(TodoContext);
 
     const onSearchValueChange = (event) => {
         console.log(event.target.value);
