@@ -4,16 +4,24 @@ import {TodoContext} from '../TodoContext';
 import {TodoCounter} from '../TodoCounter';
 import {TodoSearch} from '../TodoSearch';
 import {TodoList} from '../TodoList';
-import {TodoItem} from '../TodoItem'
+import {TodoItem} from '../TodoItem';
+import {TodoForm} from '../TodoForm';
 import {CreateTodoButton} from '../CreateTodoButton';
+import { Modal } from '../Modal';
+import {TodosError} from '../TodosError';
+import {TodosLoading} from '../TodosLoading';
+import {EmptyTodos} from '../EmptyTodos';
 
 function AppUI() {
   const { 
     error, 
     loading, 
     searchedTodos, 
-    completedTodo, 
-    deleteTodo} = React.useContext(TodoContext)
+    completeTodo, 
+    deleteTodo,
+    openModal, 
+    setOpenModal,
+  } = React.useContext(TodoContext)
 
     return(
         // react interpreta las llaves vacias como un Fragment  <>
@@ -25,24 +33,32 @@ function AppUI() {
 
       {/* // recivimos el texto de TodoItem  */}
           <TodoList>
-          {error && <p>Entrá en pánico!, hubo un error...</p>}
-          {loading && <p>Estamos cargando, no desesperez...</p>}
-          {(!loading && !searchedTodos.lenght) && <p>Crea tu primer TODO!</p>}
+          {error && <TodosError error={error} />}
+          {loading && new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
+          {(!loading && !searchedTodos.length) && <EmptyTodos />}
 
           {searchedTodos.map(todo => (
             <TodoItem
               key={todo.text}
               text={todo.text}
               completed={todo.completed}
-              onComplete={() => completedTodo(todo.text)}
+              onComplete={() => completeTodo(todo.text)}
               onDelete={() => deleteTodo(todo.text)}
               />
           ))}
         {/* key esto es para que react pueda identificar cual componente es cual dentro de una lista y asi nos evite renders innecesarios cunado un elemento no debe cambiar
-        es un id unico para cada componente*/}
+        es un id unico para cada componente */}
         </TodoList> 
 
-      <CreateTodoButton />
+        {!!openModal && (
+          <Modal>
+            <TodoForm />
+          </Modal>
+        )}
+
+      <CreateTodoButton 
+        setOpenModal={setOpenModal}
+      />
       {/* <button>+</button> */}
     </React.Fragment>
 
