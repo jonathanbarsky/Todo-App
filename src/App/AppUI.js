@@ -11,6 +11,7 @@ import { Modal } from '../Modal';
 import {TodosError} from '../TodosError';
 import {TodosLoading} from '../TodosLoading';
 import {EmptyTodos} from '../EmptyTodos';
+import { TodoHeader } from '../TodoHeader';
 
 function AppUI() {
   const { 
@@ -21,6 +22,10 @@ function AppUI() {
     deleteTodo,
     openModal, 
     setOpenModal,
+    totalTodos, 
+    completedTodos,
+    searchValue, 
+    setSearchValue,
   } = React.useContext(TodoContext)
 
     return(
@@ -28,8 +33,16 @@ function AppUI() {
     // fragment es un componente y los componentes en react empiezan con mayuscula por convencion
     //.fragment se usa porque react necesita que este todo dentro de una sola etiqueta...se usa para evitar el uso de la etiqueta div, que afectaria el css de nuestra aplicacion
     <React.Fragment>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter 
+          totalTodos={totalTodos} 
+          completedTodos={completedTodos}
+        />
+        <TodoSearch 
+          searchValue={searchValue} 
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
 
       {/* // recivimos el texto de TodoItem  */}
           <TodoList>
