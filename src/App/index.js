@@ -45,8 +45,25 @@ function App() {
       />
     </TodoHeader>
 
-    {/* // recivimos el texto de TodoItem  */}
-      <TodoList>
+      <TodoList 
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        onError = {() => <TodosError />}
+        onLoading = {() => new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
+        onEmptyTodos = {() => <EmptyTodos />}
+        render={todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+            />
+        )}
+      />
+
+      {/* <TodoList>
         {error && <TodosError error={error} />}
         {loading && new Array(5).fill(1).map((a, i) => <TodosLoading key={i} />)}
         {(!loading && !searchedTodos.length) && <EmptyTodos />}
@@ -62,7 +79,7 @@ function App() {
         ))}
       {/* key esto es para que react pueda identificar cual componente es cual dentro de una lista y asi nos evite renders innecesarios cunado un elemento no debe cambiar
       es un id unico para cada componente */}
-      </TodoList> 
+      {/* </TodoList>  */} 
 
       {!!openModal && (
         <Modal>
