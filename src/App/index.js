@@ -34,7 +34,7 @@ function App() {
   // fragment es un componente y los componentes en react empiezan con mayuscula por convencion
   //.fragment se usa porque react necesita que este todo dentro de una sola etiqueta...se usa para evitar el uso de la etiqueta div, que afectaria el css de nuestra aplicacion
   <React.Fragment>
-    <TodoHeader>
+    <TodoHeader loading={loading}>
       <TodoCounter 
         totalTodos={totalTodos} 
         completedTodos={completedTodos}

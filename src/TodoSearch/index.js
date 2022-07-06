@@ -1,7 +1,7 @@
 import React from "react";
 import './TodoSearch.css'
 
-function TodoSearch ({ searchValue, setSearchValue }) {
+function TodoSearch ({ searchValue, setSearchValue, loading }) {
     // React.useState es la forma en que podemosagregar estado a nuestros componentes cuando los creamos como funciones
     // const [searchValue, setSearchValue] = React.useState('');
 
@@ -16,6 +16,7 @@ function TodoSearch ({ searchValue, setSearchValue }) {
         placeholder="Cebolla" 
         value={searchValue}
         onChange={onSearchValueChange}
+        disabled={loading}
         />
     ];
 }
