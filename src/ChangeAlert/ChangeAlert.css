@@ -1,0 +1,17 @@
+.ChangeAlert-bg{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #1e1e1f50;
+    z-index: 2;
+}
+.ChangeAlert-container{
+    position: fixed;
+    right: -10;
+    left: -10;
+    bottom: -10;
+    padding: 34px;
+    background: #1e1e1f50;
+}
