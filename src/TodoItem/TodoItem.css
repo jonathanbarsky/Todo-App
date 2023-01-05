@@ -1,18 +1,28 @@
 .TodoItem {
-    background-color: #FAFAFA;
+    width:90%;
+    margin: 0 auto;
+    background:linear-gradient(160deg, rgba(11, 200, 194, 0.35) 0%, rgba(8, 196, 43, 0.35) 100%); 
     position: relative;
     display: flex;
+    border: 2px solid rgba(11, 200, 194, 0.5);
     justify-content: center;
     margin-top: 24px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    border-radius: 50px;
+    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+    transform: scale(1);
+    transition: 1.2s transform 0s ease-in-out;
 }
-
+.TodoItem:hover{
+    transform: scale(1.08);
+    transition: 0.8s transform 0s ease-in-out;
+}
 .TodoItem-p{
     margin: 24px 0 24px 24px;
     width: calc(100% - 120px);
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
+    color: aliceblue;
 }
 .TodoItem-p--complete {
     text-decoration: line-through;

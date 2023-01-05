@@ -23,8 +23,8 @@
     transition: fill .15s;
   }
   .Icon-container:hover .Icon-svg--check {
-    fill: #4caf50;
+    fill: rgba(11, 200, 194, 1);
   }
   .Icon-container:hover .Icon-svg--delete {
-    fill: red;
+    fill: rgba(235, 86, 255, 0.8);
   }
