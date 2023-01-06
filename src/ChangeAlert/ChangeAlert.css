@@ -1,17 +1,36 @@
 .ChangeAlert-bg{
     position: fixed;
+    display: flex;
+    align-items: flex-end;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background: #1e1e1f50;
+    background: rgba(30, 30, 31, 0.05);
+    backdrop-filter: blur(5px);
     z-index: 2;
 }
 .ChangeAlert-container{
     position: fixed;
-    right: -10;
-    left: -10;
-    bottom: -10;
     padding: 34px;
-    background: #1e1e1f50;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: left;
+    background: rgba(30, 30, 31, 0.2);
+}
+p{
+    width: 100%;
+    margin: 5px 0 20px 0;
+}
+@media (min-width: 768px){
+    .ChangeAlert-container{
+        align-items: center;
+    }
+    p{
+        width: auto;
+    }
+    
 }
